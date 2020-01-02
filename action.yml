@@ -1,0 +1,8 @@
+name: 'Generate Shell Script Unit Testing'
+description: 'GitHub Action to automatically unit test shell scripts with shunit2 or bash-spec-2'
+outputs:
+  result:
+    description: 'Esito'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
