@@ -1,6 +1,6 @@
 #!/bin/bash
 
-TESTUNITFILES_DIR="${1:-.}"
+TESTUNITFILES_DIR="${1:-./test}"
 mkdir -p /opt
 RETCODE=0
 SHUNIT2_FILES="$( ls -1 $TESTUNITFILES_DIR/*.shunit2 2>/dev/null )"

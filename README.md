@@ -39,5 +39,5 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
 ```
 
-This will run all unit testing files found in the root of the repository.
+This will run all unit testing files found in the directory `test` in the root of the repository.
 The fail of any of the unit testing script will cause the failing of this GitHub Action, and consequently of all the workflows referencing it.
