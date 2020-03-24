@@ -6,6 +6,7 @@ RETCODE=0
 SHUNIT2_FILES="$( ls -1 $TESTUNITFILES_DIR/*.shunit2 2>/dev/null )"
 BASHSPEC2_FILES="$( ls -1 $TESTUNITFILES_DIR/*.bashspec2 2>/dev/null )"
 [[ ( -n "$SHUNIT2_FILES" || -n "$BASHSPEC2_FILES" ) && ! -d /opt/stub.sh ]] && git clone https://github.com/jimeh/stub.sh.git /opt/stub.sh
+export PATH="$PATH:/opt/stub.sh"
 
 # shunit2
 [ -n "$SHUNIT2_FILES" -a ! -d /opt/shunit2 ] && git clone https://github.com/kward/shunit2.git /opt/shunit2 >/dev/null
