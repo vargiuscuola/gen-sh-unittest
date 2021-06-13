@@ -9,31 +9,39 @@ BASHSPEC2_FILES="$( ls -1 $TESTUNITFILES_DIR/*.bashspec2 2>/dev/null )"
 export PATH="$PATH:/opt/stub.sh"
 
 # shunit2
+cat <<EOD
+#### SHUNIT2 FILES
+${SHUNIT2_FILES}
+####
+EOD
 [ -n "$SHUNIT2_FILES" -a ! -d /opt/shunit2 ] && git clone https://github.com/kward/shunit2.git /opt/shunit2 >/dev/null
 for testfile in $SHUNIT2_FILES; do
-	echo "########"
-	echo "### Unit Test $testfile with shunit2 ###"
-	tmpfile="$(mktemp)"
-	cp -a "$testfile" "$tmpfile"
-	echo "source /opt/shunit2/shunit2" >>"$tmpfile"
-	chmod +x "$tmpfile"
-	"$tmpfile"
-	TMPRET="$?"
-	[ "$TMPRET" != 0 ] && RETCODE="$TMPRET"
-	rm -f "$tmpfile"
-	echo
+  echo "### Unit Test $testfile with shunit2 ###"
+  tmpfile="$(mktemp)"
+  cp -a "$testfile" "$tmpfile"
+  echo "source /opt/shunit2/shunit2" >>"$tmpfile"
+  chmod +x "$tmpfile"
+  "$tmpfile"
+  TMPRET="$?"
+  [ "$TMPRET" != 0 ] && RETCODE="$TMPRET"
+  rm -f "$tmpfile"
+  echo
 done
 
 
 # bash-spec-2
+cat <<EOD
+#### BASHSPEC2 FILES
+${BASHSPEC2_FILES}
+####
+EOD
 [ -n "$BASHSPEC2_FILES" -a ! -d /opt/bash-spec-2 ] && git clone https://github.com/holmesjr/bash-spec-2.git /opt/bash-spec-2 2>/dev/null
 for testfile in $BASHSPEC2_FILES; do
-	echo "########"
-	echo "### Unit Test $testfile with bash-spec-2 ###"
-	( . /opt/bash-spec-2/bash-spec.sh ; . $testfile )
-	TMPRET="$?"
-	[ "$TMPRET" != 0 ] && RETCODE="$TMPRET"
-	echo
-done <<<"$BASHSPEC2_FILES"
+  echo "### Unit Test $testfile with bash-spec-2 ###"
+  ( . /opt/bash-spec-2/bash-spec.sh ; . $testfile )
+  TMPRET="$?"
+  [ "$TMPRET" != 0 ] && RETCODE="$TMPRET"
+  echo
+done
 
 exit "$RETCODE"

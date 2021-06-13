@@ -4,7 +4,7 @@ GitHub Action to automatically unit test shell scripts on every git push using [
 
 ## Usage
 
-Create unit test cases with the syntax of [shunit2](https://github.com/kward/shunit2) and [bash-spec-2](https://github.com/holmesjr/bash-spec-2) unit test frameworks. Store them in one or more script files named `<filename>.shunit2` or `<filename>.bashspec2`, accordingly to the framework used, and residing in the root of the repository.
+Create unit test cases with the syntax of [shunit2](https://github.com/kward/shunit2) and [bash-spec-2](https://github.com/holmesjr/bash-spec-2) unit test frameworks. Store them in one or more script files named `<filename>.shunit2` or `<filename>.bashspec2`, accordingly to the framework used, and residing in a `test` directory on the root of the repository.
 You **do not need** to source the `shunit2` and `bash-spec-2` scripts inside your unit testing files: it will be done for you by this GitHub Action.
 
 Then create a GitHub workflow referencing `vargiuscuola/gen-sh-unittest`.
