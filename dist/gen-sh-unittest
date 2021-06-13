@@ -18,7 +18,7 @@ EOD
 for testfile in $SHUNIT2_FILES; do
   echo "### Unit Test $testfile with shunit2 ###"
   tmpfile="$(mktemp)"
-  cp -a "$testfile" "$tmpfile"
+  cp "$testfile" "$tmpfile"
   echo "source /opt/shunit2/shunit2" >>"$tmpfile"
   chmod +x "$tmpfile"
   "$tmpfile"
