@@ -5,7 +5,7 @@ FROM alpine:latest
 COPY entrypoint.sh /entrypoint.sh
 COPY dist/gen-sh-unittest /usr/bin/gen-sh-unittest
 RUN chmod 777 /tmp
-RUN apk add --no-cache bash git coreutils
+RUN apk add --no-cache bash git coreutils procps
 
 # Code file to execute when the docker container starts up (`entrypoint.sh`)
 ENTRYPOINT ["/entrypoint.sh"]
